@@ -91,7 +91,7 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
             header: "#",
             size: 50,
             cell: ({ row }) => (
-                <span className="text-surface-500 text-xs font-mono">
+                <span className="text-slate-400 text-xs font-mono">
                     {row.index + 1}
                 </span>
             ),
@@ -106,17 +106,17 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
                     >
                         <span className="truncate">{colName}</span>
                         {dtypes[colName] && (
-                            <span className="badge bg-surface-700/60 text-surface-400 text-[10px] flex-shrink-0">
+                            <span className="badge flex-shrink-0">
                                 {dtypes[colName]}
                             </span>
                         )}
                         <span className="ml-auto flex-shrink-0">
                             {column.getIsSorted() === "asc" ? (
-                                <ArrowUp className="w-3 h-3 text-brand-400" />
+                                <ArrowUp className="w-3 h-3 text-blue-600" />
                             ) : column.getIsSorted() === "desc" ? (
-                                <ArrowDown className="w-3 h-3 text-brand-400" />
+                                <ArrowDown className="w-3 h-3 text-blue-600" />
                             ) : (
-                                <ArrowUpDown className="w-3 h-3 text-surface-600 group-hover:text-surface-400 transition-colors" />
+                                <ArrowUpDown className="w-3 h-3 text-slate-400 group-hover:text-slate-600 transition-colors" />
                             )}
                         </span>
                     </button>
@@ -145,7 +145,7 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
                                         setEditValue("");
                                     }
                                 }}
-                                className="w-full px-1.5 py-0.5 bg-surface-700 border border-brand-400/50 rounded text-xs text-surface-100 focus:outline-none focus:ring-1 focus:ring-brand-400"
+                                className="w-full px-1.5 py-0.5 bg-white border border-blue-200 rounded text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-200"
                                 autoFocus
                             />
                         );
@@ -157,7 +157,7 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
                                 setEditingCell({ rowIndex: rowIdx, colName: column.id });
                                 setEditValue(String(getValue() ?? ""));
                             }}
-                            className="cursor-text px-1 py-0.5 rounded hover:bg-surface-700/40 transition-colors text-xs truncate"
+                            className="cursor-text px-1 py-0.5 rounded hover:bg-slate-100 transition-colors text-xs truncate"
                             title={String(getValue() ?? "")}
                         >
                             {getValue() ?? ""}
@@ -300,13 +300,13 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
                     className="input-field max-w-xs text-sm"
                     id="table-global-filter"
                 />
-                <span className="text-xs text-surface-500">
+                <span className="text-xs text-slate-500">
                     {tableRows.length} rows · {colNames.length} columns
                 </span>
             </div>
 
             {/* Spreadsheet */}
-            <div className="flex-1 overflow-auto rounded-xl border border-surface-800/60 bg-surface-900/40">
+            <div className="flex-1 overflow-auto rounded-xl border border-slate-200 bg-white">
                 <table className="min-w-full">
                     <thead className="sticky top-0 z-10">
                         {table.getHeaderGroups().map((headerGroup) => (
@@ -314,7 +314,7 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
                                 {headerGroup.headers.map((header, colIdx) => (
                                     <th
                                         key={header.id}
-                                        className="px-3 py-2.5 text-xs font-semibold text-surface-400 uppercase tracking-wider bg-surface-800/90 backdrop-blur-sm border-b border-surface-700/50 text-left whitespace-nowrap"
+                                        className="px-3 py-2.5 text-xs font-semibold text-slate-500 uppercase tracking-wider bg-slate-50 border-b border-slate-200 text-left whitespace-nowrap"
                                         onContextMenu={(e) => {
                                             if (colIdx > 0) {
                                                 handleContextMenu(e, "column", colIdx - 1);
@@ -335,7 +335,7 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
                         {table.getRowModel().rows.map((row) => (
                             <tr
                                 key={row.id}
-                                className="border-b border-surface-800/30 hover:bg-surface-800/30 transition-colors duration-100"
+                                className="border-b border-slate-200 hover:bg-slate-50 transition-colors duration-100"
                                 onContextMenu={(e) =>
                                     handleContextMenu(e, "row", row.index)
                                 }
@@ -343,7 +343,7 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
                                 {row.getVisibleCells().map((cell) => (
                                     <td
                                         key={cell.id}
-                                        className="px-3 py-1.5 text-xs text-surface-300"
+                                        className="px-3 py-1.5 text-xs text-slate-700"
                                     >
                                         {flexRender(
                                             cell.column.columnDef.cell,
@@ -357,7 +357,7 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
                 </table>
 
                 {tableRows.length === 0 && (
-                    <div className="flex items-center justify-center h-64 text-surface-500 text-sm">
+                    <div className="flex items-center justify-center h-64 text-slate-500 text-sm">
                         No data loaded. Select a project to view data.
                     </div>
                 )}
@@ -367,25 +367,25 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
             {contextMenu && (
                 <div
                     ref={contextMenuRef}
-                    className="fixed z-50 bg-surface-800 border border-surface-700/50 rounded-xl shadow-glass p-1.5 min-w-[160px] animate-scale-in"
+                    className="fixed z-50 bg-white border border-slate-200 rounded-xl shadow-lg p-1.5 min-w-[160px] animate-scale-in"
                 >
                     {contextMenu.type === "column" && (
                         <>
                             <button
                                 onClick={() => { handleAddColumn(contextMenu.index); setContextMenu(null); }}
-                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-surface-300 hover:bg-surface-700/60 rounded-lg transition-colors"
+                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
                             >
                                 <Plus className="w-4 h-4" /> Add Column
                             </button>
                             <button
                                 onClick={() => { handleDeleteColumn(contextMenu.index); setContextMenu(null); }}
-                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-400 hover:bg-red-400/10 rounded-lg transition-colors"
+                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                             >
                                 <Trash2 className="w-4 h-4" /> Delete Column
                             </button>
                             <button
                                 onClick={() => { handleRenameColumn(contextMenu.index); setContextMenu(null); }}
-                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-surface-300 hover:bg-surface-700/60 rounded-lg transition-colors"
+                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
                             >
                                 <Pencil className="w-4 h-4" /> Rename Column
                             </button>
@@ -395,13 +395,13 @@ export default function SpreadsheetTable({ projectId, data: externalData }) {
                         <>
                             <button
                                 onClick={() => { handleAddRow(contextMenu.index); setContextMenu(null); }}
-                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-surface-300 hover:bg-surface-700/60 rounded-lg transition-colors"
+                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
                             >
                                 <Plus className="w-4 h-4" /> Add Row
                             </button>
                             <button
                                 onClick={() => { handleDeleteRow(contextMenu.index); setContextMenu(null); }}
-                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-400 hover:bg-red-400/10 rounded-lg transition-colors"
+                                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                             >
                                 <Trash2 className="w-4 h-4" /> Delete Row
                             </button>

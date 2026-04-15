@@ -232,16 +232,16 @@ const Menu_NavBar = ({ projectId, onTransform }) => {
   };
 
   return (
-    <div className="bg-white border-b border-gray-200">
-      <div className="flex items-center gap-0 border-b border-gray-200 px-8">
+    <div className="bg-white border-b border-slate-200">
+      <div className="flex items-center gap-0 border-b border-slate-200 px-6">
         {Object.keys(tabs).map((tabName) => (
           <button
             key={tabName}
             onClick={() => setActiveTab(tabName)}
-            className={`px-4 py-1.5 text-sm font-medium ${
+            className={`px-4 py-2 text-sm font-semibold ${
               activeTab === tabName
-                ? "text-gray-900 border-b-2 border-gray-300"
-                : "text-gray-500 hover:text-gray-700"
+                ? "text-slate-900 border-b-2 border-blue-500"
+                : "text-slate-500 hover:text-slate-800"
             }`}
           >
             {tabName}
@@ -249,24 +249,24 @@ const Menu_NavBar = ({ projectId, onTransform }) => {
         ))}
       </div>
 
-      <div className="flex items-stretch gap-3 px-8 py-2 min-h-[64px]">
+      <div className="flex items-stretch gap-4 px-6 py-3 min-h-[72px]">
         {tabs[activeTab].map((section, sectionIdx) => (
           <div key={section.group} className="flex items-stretch gap-3">
-            {sectionIdx > 0 && <div className="w-px bg-gray-200 self-stretch" />}
+            {sectionIdx > 0 && <div className="w-px bg-slate-200 self-stretch" />}
             <div className="flex flex-col items-center">
               <div className="flex items-center gap-1 flex-1">
                 {section.items.map((item) => (
                   <button
                     key={item.label}
                     onClick={item.onClick}
-                    className="flex flex-col items-center gap-1 px-3 py-1.5 rounded-md hover:bg-gray-100"
+                    className="flex flex-col items-center gap-1 px-3 py-2 rounded-lg hover:bg-slate-100"
                   >
-                    <item.icon className="w-5 h-5 text-gray-600" />
-                    <span className="text-xs text-gray-700">{item.label}</span>
+                    <item.icon className="w-5 h-5 text-slate-600" />
+                    <span className="text-xs text-slate-700">{item.label}</span>
                   </button>
                 ))}
               </div>
-              <span className="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">
+              <span className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">
                 {section.group}
               </span>
             </div>

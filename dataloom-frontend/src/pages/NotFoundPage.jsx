@@ -9,19 +9,19 @@ export default function NotFoundPage() {
 
   return (
     <div className="flex items-center justify-center h-full animate-fade-in">
-      <div className="text-center max-w-md">
+        <div className="text-center max-w-md">
         <div className="relative mb-8">
-          <span className="text-[120px] font-black text-surface-800/50 leading-none select-none">
+          <span className="text-[120px] font-black text-slate-200 leading-none select-none">
             404
           </span>
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-5xl font-bold text-gradient">Oops!</span>
           </div>
         </div>
-        <h1 className="text-xl font-semibold text-surface-200 mb-2">
+        <h1 className="text-xl font-semibold text-slate-900 mb-2">
           Page not found
         </h1>
-        <p className="text-surface-400 text-sm mb-8">
+        <p className="text-slate-500 text-sm mb-8">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <div className="flex items-center justify-center gap-3">

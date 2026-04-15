@@ -17,7 +17,6 @@ import {
     GitCommit,
     CheckCircle2,
     XCircle,
-    ChevronRight,
 } from "lucide-react";
 
 /**
@@ -104,10 +103,10 @@ export default function VersionHistoryPanel({ projectId, onRevert }) {
                 {/* Header with actions */}
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div>
-                        <h2 className="text-lg font-semibold text-white">
+                        <h2 className="text-lg font-semibold text-slate-900">
                             Version History
                         </h2>
-                        <p className="text-sm text-surface-400 mt-1">
+                        <p className="text-sm text-slate-500 mt-1">
                             Track changes, save checkpoints, and revert
                         </p>
                     </div>
@@ -132,12 +131,12 @@ export default function VersionHistoryPanel({ projectId, onRevert }) {
                 </div>
 
                 {/* Tab toggle */}
-                <div className="flex items-center bg-surface-900/50 rounded-xl p-1 border border-surface-800/50 w-fit">
+                <div className="flex items-center bg-white/80 rounded-xl p-1 border border-slate-200 w-fit">
                     <button
                         onClick={() => setActiveTab("logs")}
                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${activeTab === "logs"
-                                ? "bg-brand-500/20 text-brand-400"
-                                : "text-surface-400 hover:text-surface-200"
+                                ? "bg-blue-50 text-blue-700"
+                                : "text-slate-500 hover:text-slate-900"
                             }`}
                     >
                         Activity Logs
@@ -145,8 +144,8 @@ export default function VersionHistoryPanel({ projectId, onRevert }) {
                     <button
                         onClick={() => setActiveTab("checkpoint")}
                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${activeTab === "checkpoint"
-                                ? "bg-brand-500/20 text-brand-400"
-                                : "text-surface-400 hover:text-surface-200"
+                                ? "bg-blue-50 text-blue-700"
+                                : "text-slate-500 hover:text-slate-900"
                             }`}
                     >
                         Last Checkpoint
@@ -155,40 +154,40 @@ export default function VersionHistoryPanel({ projectId, onRevert }) {
 
                 {/* Logs */}
                 {activeTab === "logs" && (
-                    <div className="glass-card overflow-hidden">
+                    <div className="card overflow-hidden">
                         {logs.length === 0 ? (
                             <div className="p-8 text-center">
-                                <Clock className="w-10 h-10 text-surface-600 mx-auto mb-3" />
-                                <p className="text-surface-400 text-sm">
+                                <Clock className="w-10 h-10 text-slate-300 mx-auto mb-3" />
+                                <p className="text-slate-500 text-sm">
                                     No activity logs yet
                                 </p>
                             </div>
                         ) : (
-                            <div className="divide-y divide-surface-800/40">
+                            <div className="divide-y divide-slate-200">
                                 {logs.map((log) => (
                                     <div
                                         key={log.id}
-                                        className="flex items-center gap-4 px-5 py-3 hover:bg-surface-800/30 transition-colors animate-fade-in-up"
+                                        className="flex items-center gap-4 px-5 py-3 hover:bg-slate-50 transition-colors animate-fade-in-up"
                                     >
-                                        <div className="w-8 h-8 rounded-lg bg-brand-500/10 flex items-center justify-center flex-shrink-0">
-                                            <GitCommit className="w-4 h-4 text-brand-400" />
+                                        <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                            <GitCommit className="w-4 h-4 text-blue-600" />
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-surface-200">
+                                            <p className="text-sm font-medium text-slate-900">
                                                 {log.action_type}
                                             </p>
-                                            <p className="text-xs text-surface-500 mt-0.5">
+                                            <p className="text-xs text-slate-500 mt-0.5">
                                                 {new Date(log.timestamp).toLocaleString()}
                                             </p>
                                         </div>
                                         <div className="flex items-center gap-2 flex-shrink-0">
                                             {log.applied ? (
-                                                <span className="flex items-center gap-1 text-xs text-emerald-400">
+                                                <span className="flex items-center gap-1 text-xs text-emerald-600">
                                                     <CheckCircle2 className="w-3.5 h-3.5" />
                                                     Applied
                                                 </span>
                                             ) : (
-                                                <span className="flex items-center gap-1 text-xs text-surface-500">
+                                                <span className="flex items-center gap-1 text-xs text-slate-500">
                                                     <XCircle className="w-3.5 h-3.5" />
                                                     Skipped
                                                 </span>
@@ -203,17 +202,17 @@ export default function VersionHistoryPanel({ projectId, onRevert }) {
 
                 {/* Checkpoint */}
                 {activeTab === "checkpoint" && (
-                    <div className="glass-card p-6">
+                    <div className="card p-6">
                         {checkpoint && checkpoint.id ? (
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                                    <GitCommit className="w-6 h-6 text-emerald-400" />
+                                <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                                    <GitCommit className="w-6 h-6 text-emerald-600" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-sm font-semibold text-surface-200">
+                                    <p className="text-sm font-semibold text-slate-900">
                                         {checkpoint.message || "Checkpoint"}
                                     </p>
-                                    <p className="text-xs text-surface-500 mt-0.5">
+                                    <p className="text-xs text-slate-500 mt-0.5">
                                         {new Date(checkpoint.created_at).toLocaleString()}
                                     </p>
                                 </div>
@@ -228,11 +227,11 @@ export default function VersionHistoryPanel({ projectId, onRevert }) {
                             </div>
                         ) : (
                             <div className="text-center py-8">
-                                <GitCommit className="w-10 h-10 text-surface-600 mx-auto mb-3" />
-                                <p className="text-surface-400 text-sm">
+                                <GitCommit className="w-10 h-10 text-slate-300 mx-auto mb-3" />
+                                <p className="text-slate-500 text-sm">
                                     No checkpoint available
                                 </p>
-                                <p className="text-surface-500 text-xs mt-1">
+                                <p className="text-slate-500 text-xs mt-1">
                                     Save a checkpoint to enable reverting
                                 </p>
                             </div>

@@ -32,7 +32,7 @@ export default function TopBar({ sidebarCollapsed, onToggleSidebar }) {
     const breadcrumbs = getBreadcrumbs();
 
     return (
-        <header className="h-16 border-b border-surface-800/60 bg-surface-900/50 backdrop-blur-xl flex items-center justify-between px-6 flex-shrink-0">
+        <header className="h-16 border-b border-slate-200 bg-white/80 backdrop-blur flex items-center justify-between px-6 flex-shrink-0">
             {/* Left: Menu toggle + Breadcrumbs */}
             <div className="flex items-center gap-4">
                 <button
@@ -47,17 +47,17 @@ export default function TopBar({ sidebarCollapsed, onToggleSidebar }) {
                     {breadcrumbs.map((crumb, idx) => (
                         <div key={idx} className="flex items-center gap-1">
                             {idx > 0 && (
-                                <span className="text-surface-600 mx-1">/</span>
+                                <span className="text-slate-400 mx-1">/</span>
                             )}
                             {crumb.to ? (
                                 <button
                                     onClick={() => navigate(crumb.to)}
-                                    className="text-surface-400 hover:text-surface-100 transition-colors duration-200"
+                                    className="text-slate-500 hover:text-slate-900 transition-colors duration-200"
                                 >
                                     {crumb.label}
                                 </button>
                             ) : (
-                                <span className="text-surface-200 font-medium">
+                                <span className="text-slate-900 font-medium">
                                     {crumb.label}
                                 </span>
                             )}
@@ -69,34 +69,31 @@ export default function TopBar({ sidebarCollapsed, onToggleSidebar }) {
             {/* Right: Search + Notifications */}
             <div className="flex items-center gap-3">
                 <div className="relative hidden md:block">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-500" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <input
                         type="text"
                         placeholder="Search datasets..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-10 pr-4 py-2 w-64 bg-surface-800/60 border border-surface-700/50 rounded-xl text-sm text-surface-200 placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-brand-400/40 focus:border-brand-500/50 transition-all duration-200"
+                        className="pl-10 pr-4 py-2 w-64 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300 transition-all duration-200"
                     />
-                    <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-surface-600 bg-surface-700/50 px-1.5 py-0.5 rounded font-mono">
+                    <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded font-mono">
                         ⌘K
                     </kbd>
                 </div>
 
-                <button
-                    className="btn-ghost p-2 relative"
-                    aria-label="Notifications"
-                >
+                <button className="btn-ghost p-2 relative" aria-label="Notifications">
                     <Bell className="w-5 h-5" />
-                    <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-brand-500 rounded-full" />
+                    <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full" />
                 </button>
 
-                <div className="flex items-center gap-3 px-3 py-2 rounded-xl bg-surface-800/60 border border-surface-700/50">
-                    <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-cyan-500 text-white flex items-center justify-center font-semibold">
+                <div className="flex items-center gap-3 px-3 py-2 rounded-xl bg-slate-50 border border-slate-200">
+                    <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-sky-400 text-white flex items-center justify-center font-semibold">
                         {initials}
                     </div>
                     <div className="hidden sm:block min-w-0">
-                        <p className="text-sm font-semibold text-surface-100 truncate">{user?.name || "Guest"}</p>
-                        <p className="text-xs text-surface-500 truncate">{user?.email || "Signed in"}</p>
+                        <p className="text-sm font-semibold text-slate-900 truncate">{user?.name || "Guest"}</p>
+                        <p className="text-xs text-slate-500 truncate">{user?.email || "Signed in"}</p>
                     </div>
                     <button
                         onClick={logout}

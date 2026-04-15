@@ -35,16 +35,16 @@ export default function Sidebar({ collapsed, onToggle }) {
 
     return (
         <aside
-            className={`relative flex flex-col bg-surface-900/80 backdrop-blur-xl border-r border-surface-800/60 transition-all duration-300 ease-in-out ${collapsed ? "w-[72px]" : "w-64"
+            className={`relative flex flex-col bg-white/85 backdrop-blur border-r border-slate-200 transition-all duration-300 ease-in-out ${collapsed ? "w-[72px]" : "w-64"
                 }`}
         >
             {/* Logo */}
-            <div className="flex items-center gap-3 px-4 h-16 border-b border-surface-800/60">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-cyan-500 flex items-center justify-center flex-shrink-0 shadow-glow">
+            <div className="flex items-center gap-3 px-4 h-16 border-b border-slate-200">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-sky-400 flex items-center justify-center flex-shrink-0 shadow-sm">
                     <DataLoomLogo className="w-5 h-5 text-white" />
                 </div>
                 {!collapsed && (
-                    <span className="text-lg font-bold text-white tracking-tight animate-fade-in">
+                    <span className="text-lg font-semibold text-slate-900 tracking-tight font-display animate-fade-in">
                         DataLoom
                     </span>
                 )}
@@ -53,7 +53,7 @@ export default function Sidebar({ collapsed, onToggle }) {
             {/* Main Navigation */}
             <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
                 {!collapsed && (
-                    <p className="px-3 py-2 text-[11px] font-semibold text-surface-500 uppercase tracking-wider">
+                    <p className="px-3 py-2 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
                         Menu
                     </p>
                 )}
@@ -77,11 +77,11 @@ export default function Sidebar({ collapsed, onToggle }) {
                     <>
                         {!collapsed && (
                             <div className="mt-6">
-                                <p className="px-3 py-2 text-[11px] font-semibold text-surface-500 uppercase tracking-wider">
+                                <p className="px-3 py-2 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
                                     Workspace
                                 </p>
-                                <div className="mx-3 mb-3 px-3 py-2 rounded-lg bg-brand-500/10 border border-brand-500/20">
-                                    <p className="text-xs font-medium text-brand-300 truncate">
+                                <div className="mx-3 mb-3 px-3 py-2 rounded-lg bg-blue-50 border border-blue-100">
+                                    <p className="text-xs font-medium text-blue-700 truncate">
                                         {projectName || "Untitled Project"}
                                     </p>
                                 </div>
@@ -104,7 +104,7 @@ export default function Sidebar({ collapsed, onToggle }) {
             </nav>
 
             {/* Bottom: Profile & Collapse */}
-            <div className="p-3 border-t border-surface-800/60 space-y-1">
+            <div className="p-3 border-t border-slate-200 space-y-1">
                 <NavLink
                     to="/profile"
                     className={({ isActive }) =>
@@ -113,15 +113,15 @@ export default function Sidebar({ collapsed, onToggle }) {
                     }
                     title={collapsed ? "Profile" : undefined}
                 >
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-400 to-violet-500 flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-sky-400 flex items-center justify-center flex-shrink-0">
                         <User className="w-4 h-4 text-white" />
                     </div>
                     {!collapsed && (
                         <div className="min-w-0">
-                            <p className="text-sm font-medium text-surface-200 truncate">
+                            <p className="text-sm font-medium text-slate-900 truncate">
                                 {user?.name || "Guest"}
                             </p>
-                            <p className="text-xs text-surface-500 truncate">
+                            <p className="text-xs text-slate-500 truncate">
                                 {user?.email || "Profile"}
                             </p>
                         </div>

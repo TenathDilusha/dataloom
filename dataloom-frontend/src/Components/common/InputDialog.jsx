@@ -18,11 +18,11 @@ export default function InputDialog({ isOpen, message, defaultValue = "", onSubm
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+        className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"
         onClick={onCancel}
       />
       <div className="relative glass-card max-w-sm w-full p-6 animate-scale-in">
-        <p className="text-sm text-surface-300 mb-4">{message}</p>
+        <p className="text-sm text-slate-600 mb-4">{message}</p>
         <form onSubmit={handleSubmit}>
           <input
             type="text"

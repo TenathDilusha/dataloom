@@ -27,8 +27,8 @@ const transformTypes = [
         label: "Filter",
         icon: Filter,
         desc: "Filter rows by column condition",
-        color: "text-gray-300",
-        bg: "bg-gray-500/10",
+        color: "text-slate-600",
+        bg: "bg-slate-100",
         fields: ["column", "condition", "value"],
     },
     {
@@ -36,8 +36,8 @@ const transformTypes = [
         label: "Sort",
         icon: ArrowUpDown,
         desc: "Sort rows by column",
-        color: "text-emerald-400",
-        bg: "bg-emerald-500/10",
+        color: "text-emerald-600",
+        bg: "bg-emerald-50",
         fields: ["column", "ascending"],
     },
     {
@@ -45,8 +45,8 @@ const transformTypes = [
         label: "Drop Duplicates",
         icon: CopyMinus,
         desc: "Remove duplicate rows",
-        color: "text-amber-400",
-        bg: "bg-amber-500/10",
+        color: "text-amber-600",
+        bg: "bg-amber-50",
         fields: ["columns"],
     },
     {
@@ -54,8 +54,8 @@ const transformTypes = [
         label: "Cast Type",
         icon: RefreshCw,
         desc: "Change column data types",
-        color: "text-violet-400",
-        bg: "bg-violet-500/10",
+        color: "text-blue-600",
+        bg: "bg-blue-50",
         fields: ["column", "target_type"],
     },
     {
@@ -63,8 +63,8 @@ const transformTypes = [
         label: "Trim Whitespace",
         icon: Scissors,
         desc: "Remove leading/trailing spaces",
-        color: "text-rose-400",
-        bg: "bg-rose-500/10",
+        color: "text-rose-600",
+        bg: "bg-rose-50",
         fields: ["columns"],
     },
     {
@@ -72,8 +72,8 @@ const transformTypes = [
         label: "Fill Empty",
         icon: Eraser,
         desc: "Fill missing values",
-        color: "text-gray-300",
-        bg: "bg-gray-500/10",
+        color: "text-slate-600",
+        bg: "bg-slate-100",
         fields: ["column", "fill_value", "strategy"],
     },
     {
@@ -81,8 +81,8 @@ const transformTypes = [
         label: "Advanced Query",
         icon: Code,
         desc: "Pandas-style query filter",
-        color: "text-orange-400",
-        bg: "bg-orange-500/10",
+        color: "text-orange-600",
+        bg: "bg-orange-50",
         fields: ["query"],
     },
     {
@@ -90,8 +90,8 @@ const transformTypes = [
         label: "Pivot Table",
         icon: Table2,
         desc: "Create pivot table",
-        color: "text-pink-400",
-        bg: "bg-pink-500/10",
+        color: "text-sky-600",
+        bg: "bg-sky-50",
         fields: ["index", "columns_field", "values", "aggfunc"],
     },
 ];
@@ -227,7 +227,7 @@ export default function TransformationBuilder({ projectId, onTransform }) {
             case "values":
                 return (
                     <div key={field}>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5 capitalize">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5 capitalize">
                             {field.replace(/_/g, " ")}
                         </label>
                         <select
@@ -245,7 +245,7 @@ export default function TransformationBuilder({ projectId, onTransform }) {
             case "condition":
                 return (
                     <div key={field}>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Condition
                         </label>
                         <select
@@ -263,7 +263,7 @@ export default function TransformationBuilder({ projectId, onTransform }) {
             case "target_type":
                 return (
                     <div key={field}>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Target Type
                         </label>
                         <select
@@ -281,7 +281,7 @@ export default function TransformationBuilder({ projectId, onTransform }) {
             case "strategy":
                 return (
                     <div key={field}>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Strategy
                         </label>
                         <select
@@ -298,7 +298,7 @@ export default function TransformationBuilder({ projectId, onTransform }) {
             case "aggfunc":
                 return (
                     <div key={field}>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Aggregate Function
                         </label>
                         <select
@@ -315,7 +315,7 @@ export default function TransformationBuilder({ projectId, onTransform }) {
             case "ascending":
                 return (
                     <div key={field}>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Order
                         </label>
                         <select
@@ -331,7 +331,7 @@ export default function TransformationBuilder({ projectId, onTransform }) {
             case "columns":
                 return (
                     <div key={field}>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Columns (comma-separated)
                         </label>
                         <input
@@ -346,7 +346,7 @@ export default function TransformationBuilder({ projectId, onTransform }) {
             default:
                 return (
                     <div key={field}>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5 capitalize">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5 capitalize">
                             {field.replace(/_/g, " ")}
                         </label>
                         <input
@@ -365,10 +365,10 @@ export default function TransformationBuilder({ projectId, onTransform }) {
         <div className="h-full overflow-auto">
             <div className="max-w-3xl mx-auto space-y-3">
                 <div className="mb-4">
-                    <h2 className="text-lg font-semibold text-white">
+                    <h2 className="text-lg font-semibold text-slate-900">
                         Transformation Builder
                     </h2>
-                    <p className="text-sm text-surface-400 mt-1">
+                    <p className="text-sm text-slate-500 mt-1">
                         Select an operation and configure parameters to transform your data
                     </p>
                 </div>
@@ -376,35 +376,35 @@ export default function TransformationBuilder({ projectId, onTransform }) {
                 {transformTypes.map((t) => (
                     <div
                         key={t.key}
-                        className={`glass-card overflow-hidden transition-all duration-300 ${expandedCard === t.key
-                                ? "border-brand-500/40 shadow-glow"
+                        className={`card overflow-hidden transition-all duration-300 ${expandedCard === t.key
+                            ? "border-blue-200 shadow-md"
                                 : ""
                             }`}
                     >
                         <button
                             onClick={() => handleSelectTransform(t.key)}
-                            className="w-full flex items-center gap-4 p-4 hover:bg-surface-800/40 transition-colors"
+                            className="w-full flex items-center gap-4 p-4 hover:bg-slate-50 transition-colors"
                             id={`transform-${t.key}`}
                         >
                             <div className={`w-10 h-10 rounded-xl ${t.bg} flex items-center justify-center flex-shrink-0`}>
                                 <t.icon className={`w-5 h-5 ${t.color}`} />
                             </div>
                             <div className="flex-1 text-left min-w-0">
-                                <h3 className="text-sm font-semibold text-surface-200">
+                                <h3 className="text-sm font-semibold text-slate-900">
                                     {t.label}
                                 </h3>
-                                <p className="text-xs text-surface-500 mt-0.5">{t.desc}</p>
+                                <p className="text-xs text-slate-500 mt-0.5">{t.desc}</p>
                             </div>
                             {expandedCard === t.key ? (
-                                <ChevronUp className="w-4 h-4 text-surface-400 flex-shrink-0" />
+                                <ChevronUp className="w-4 h-4 text-slate-400 flex-shrink-0" />
                             ) : (
-                                <ChevronDown className="w-4 h-4 text-surface-400 flex-shrink-0" />
+                                <ChevronDown className="w-4 h-4 text-slate-400 flex-shrink-0" />
                             )}
                         </button>
 
                         {/* Expanded form */}
                         {expandedCard === t.key && (
-                            <div className="px-4 pb-4 border-t border-surface-800/40 animate-fade-in">
+                            <div className="px-4 pb-4 border-t border-slate-200 animate-fade-in">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                                     {t.fields.map((field) => renderFormField(field))}
                                 </div>

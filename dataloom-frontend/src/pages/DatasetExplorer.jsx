@@ -122,13 +122,13 @@ export default function DatasetExplorer() {
 
             {/* Drag overlay */}
             {isDragActive && (
-                <div className="fixed inset-0 z-50 bg-surface-950/80 backdrop-blur-sm flex items-center justify-center">
-                    <div className="glass-card gradient-border p-12 text-center animate-scale-in">
-                        <CloudUpload className="w-16 h-16 text-brand-400 mx-auto mb-4 animate-float" />
-                        <h3 className="text-xl font-bold text-white mb-2">
+                <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center">
+                    <div className="glass-card p-12 text-center animate-scale-in">
+                        <CloudUpload className="w-16 h-16 text-blue-500 mx-auto mb-4 animate-float" />
+                        <h3 className="text-xl font-semibold text-slate-900 mb-2">
                             Drop your CSV here
                         </h3>
-                        <p className="text-surface-400">
+                        <p className="text-slate-500">
                             Release to upload your dataset
                         </p>
                     </div>
@@ -138,8 +138,8 @@ export default function DatasetExplorer() {
             {/* Header */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Dataset Explorer</h1>
-                    <p className="text-surface-400 text-sm mt-1">
+                    <h1 className="text-2xl font-semibold text-slate-900 font-display">Dataset Explorer</h1>
+                    <p className="text-slate-500 text-sm mt-1">
                         Manage and explore your datasets
                     </p>
                 </div>
@@ -156,7 +156,7 @@ export default function DatasetExplorer() {
             {/* Search + View Toggle */}
             <div className="flex items-center gap-3">
                 <div className="relative flex-1 max-w-md">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-500" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <input
                         type="text"
                         placeholder="Search datasets..."
@@ -166,12 +166,12 @@ export default function DatasetExplorer() {
                         id="dataset-search"
                     />
                 </div>
-                <div className="flex items-center bg-surface-800/60 rounded-xl border border-surface-700/50 p-1">
+                <div className="flex items-center bg-slate-100 rounded-xl border border-slate-200 p-1">
                     <button
                         onClick={() => setViewMode("grid")}
                         className={`p-2 rounded-lg transition-all duration-200 ${viewMode === "grid"
-                            ? "bg-brand-500/20 text-brand-400"
-                            : "text-surface-400 hover:text-surface-200"
+                            ? "bg-white text-slate-900"
+                            : "text-slate-500 hover:text-slate-800"
                             }`}
                         aria-label="Grid view"
                     >
@@ -180,8 +180,8 @@ export default function DatasetExplorer() {
                     <button
                         onClick={() => setViewMode("list")}
                         className={`p-2 rounded-lg transition-all duration-200 ${viewMode === "list"
-                            ? "bg-brand-500/20 text-brand-400"
-                            : "text-surface-400 hover:text-surface-200"
+                            ? "bg-white text-slate-900"
+                            : "text-slate-500 hover:text-slate-800"
                             }`}
                         aria-label="List view"
                     >
@@ -193,14 +193,14 @@ export default function DatasetExplorer() {
             {/* Drag-and-drop zone */}
             <button
                 onClick={() => setShowUploadModal(true)}
-                className="w-full border-2 border-dashed border-surface-700/60 hover:border-brand-500/50 rounded-2xl p-8 text-center transition-all duration-300 hover:bg-brand-500/5 group"
+                className="w-full border-2 border-dashed border-slate-200 hover:border-blue-300 rounded-2xl p-8 text-center transition-all duration-300 hover:bg-blue-50 group"
                 id="dataset-dropzone"
             >
-                <Upload className="w-8 h-8 text-surface-500 group-hover:text-brand-400 mx-auto mb-3 transition-colors" />
-                <p className="text-surface-300 font-medium">
-                    Drag & drop a CSV file here
+                <Upload className="w-8 h-8 text-slate-400 group-hover:text-blue-500 mx-auto mb-3 transition-colors" />
+                <p className="text-slate-700 font-medium">
+                    Drag and drop a CSV file here
                 </p>
-                <p className="text-surface-500 text-sm mt-1">
+                <p className="text-slate-500 text-sm mt-1">
                     or click to browse files
                 </p>
             </button>
@@ -214,11 +214,11 @@ export default function DatasetExplorer() {
                 </div>
             ) : filteredProjects.length === 0 ? (
                 <div className="text-center py-16">
-                    <Database className="w-16 h-16 text-surface-700 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-surface-300">
+                    <Database className="w-16 h-16 text-slate-200 mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-slate-700">
                         {searchQuery ? "No matching datasets" : "No datasets yet"}
                     </h3>
-                    <p className="text-surface-500 mt-2 max-w-sm mx-auto text-sm">
+                    <p className="text-slate-500 mt-2 max-w-sm mx-auto text-sm">
                         {searchQuery
                             ? "Try a different search term"
                             : "Upload a CSV file to start exploring and transforming your data"}
@@ -229,7 +229,7 @@ export default function DatasetExplorer() {
                     {filteredProjects.map((project) => (
                         <div
                             key={project.project_id}
-                            className="glass-card-hover p-5 flex flex-col gap-3 relative group animate-fade-in-up cursor-pointer"
+                            className="card-hover p-5 flex flex-col gap-3 relative group animate-fade-in-up cursor-pointer"
                             onClick={() => navigate(`/workspace/${project.project_id}`)}
                             id={`project-card-${project.project_id}`}
                         >
@@ -241,28 +241,28 @@ export default function DatasetExplorer() {
                                         projectId: project.project_id,
                                     });
                                 }}
-                                className="absolute top-3 right-3 p-1.5 rounded-lg text-surface-500 hover:text-red-400 hover:bg-red-400/10 opacity-0 group-hover:opacity-100 transition-all duration-200"
+                                className="absolute top-3 right-3 p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all duration-200"
                                 aria-label="Delete project"
                             >
                                 <Trash2 className="w-4 h-4" />
                             </button>
 
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-violet-500/20 flex items-center justify-center">
-                                <FileSpreadsheet className="w-5 h-5 text-brand-400" />
+                            <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                                <FileSpreadsheet className="w-5 h-5 text-blue-600" />
                             </div>
                             <div className="min-w-0">
-                                <h3 className="text-sm font-semibold text-surface-200 truncate group-hover:text-white transition-colors">
+                                <h3 className="text-sm font-semibold text-slate-900 truncate group-hover:text-slate-900 transition-colors">
                                     {project.name}
                                 </h3>
                                 {project.description && (
-                                    <p className="text-xs text-surface-500 line-clamp-2 mt-1">
+                                    <p className="text-xs text-slate-500 line-clamp-2 mt-1">
                                         {project.description}
                                     </p>
                                 )}
                             </div>
-                            <div className="flex items-center gap-1.5 mt-auto pt-2 border-t border-surface-800/40">
-                                <Clock className="w-3 h-3 text-surface-600" />
-                                <span className="text-xs text-surface-500">
+                            <div className="flex items-center gap-1.5 mt-auto pt-2 border-t border-slate-200">
+                                <Clock className="w-3 h-3 text-slate-400" />
+                                <span className="text-xs text-slate-500">
                                     {new Date(project.last_modified).toLocaleDateString(
                                         undefined,
                                         { month: "short", day: "numeric", year: "numeric" }
@@ -278,25 +278,25 @@ export default function DatasetExplorer() {
                         <button
                             key={project.project_id}
                             onClick={() => navigate(`/workspace/${project.project_id}`)}
-                            className="w-full flex items-center gap-4 p-4 glass-card-hover group animate-fade-in-up"
+                            className="w-full flex items-center gap-4 p-4 card-hover group animate-fade-in-up"
                             id={`project-list-${project.project_id}`}
                         >
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                                <FileSpreadsheet className="w-5 h-5 text-brand-400" />
+                            <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                <FileSpreadsheet className="w-5 h-5 text-blue-600" />
                             </div>
                             <div className="flex-1 min-w-0 text-left">
-                                <p className="text-sm font-medium text-surface-200 truncate group-hover:text-white transition-colors">
+                                <p className="text-sm font-medium text-slate-900 truncate group-hover:text-slate-900 transition-colors">
                                     {project.name}
                                 </p>
                                 {project.description && (
-                                    <p className="text-xs text-surface-500 truncate mt-0.5">
+                                    <p className="text-xs text-slate-500 truncate mt-0.5">
                                         {project.description}
                                     </p>
                                 )}
                             </div>
                             <div className="flex items-center gap-1.5 flex-shrink-0">
-                                <Clock className="w-3.5 h-3.5 text-surface-500" />
-                                <span className="text-xs text-surface-500">
+                                <Clock className="w-3.5 h-3.5 text-slate-400" />
+                                <span className="text-xs text-slate-500">
                                     {new Date(project.last_modified).toLocaleDateString(
                                         undefined,
                                         { month: "short", day: "numeric" }
@@ -311,7 +311,7 @@ export default function DatasetExplorer() {
                                         projectId: project.project_id,
                                     });
                                 }}
-                                className="p-1.5 rounded-lg text-surface-500 hover:text-red-400 hover:bg-red-400/10 opacity-0 group-hover:opacity-100 transition-all"
+                                className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all"
                                 aria-label="Delete project"
                             >
                                 <Trash2 className="w-4 h-4" />
@@ -325,15 +325,15 @@ export default function DatasetExplorer() {
             {showUploadModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
                     <div
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+                        className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"
                         onClick={() => setShowUploadModal(false)}
                     />
                     <div className="glass-card w-full max-w-lg z-50 animate-scale-in overflow-hidden">
-                        <div className="px-6 py-5 border-b border-surface-800/60">
-                            <h2 className="text-lg font-semibold text-white">
+                        <div className="px-6 py-5 border-b border-slate-200">
+                            <h2 className="text-lg font-semibold text-slate-900">
                                 Upload New Dataset
                             </h2>
-                            <p className="text-sm text-surface-400 mt-1">
+                            <p className="text-sm text-slate-500 mt-1">
                                 Import a CSV file to start transforming
                             </p>
                         </div>
@@ -341,7 +341,7 @@ export default function DatasetExplorer() {
                         <form onSubmit={handleSubmitUpload} className="p-6 space-y-5">
                             {/* Project Name */}
                             <div>
-                                <label className="block text-sm font-medium text-surface-300 mb-2">
+                                <label className="block text-sm font-medium text-slate-600 mb-2">
                                     Project Name
                                 </label>
                                 <input
@@ -356,7 +356,7 @@ export default function DatasetExplorer() {
 
                             {/* Description */}
                             <div>
-                                <label className="block text-sm font-medium text-surface-300 mb-2">
+                                <label className="block text-sm font-medium text-slate-600 mb-2">
                                     Description
                                 </label>
                                 <textarea
@@ -371,29 +371,29 @@ export default function DatasetExplorer() {
 
                             {/* File Upload */}
                             <div>
-                                <label className="block text-sm font-medium text-surface-300 mb-2">
+                                <label className="block text-sm font-medium text-slate-600 mb-2">
                                     CSV File
                                 </label>
                                 <label
-                                    className="flex flex-col items-center gap-3 p-6 border-2 border-dashed border-surface-600/50 rounded-xl hover:border-brand-500/50 hover:bg-brand-500/5 transition-all duration-200 cursor-pointer"
+                                    className="flex flex-col items-center gap-3 p-6 border-2 border-dashed border-slate-200 rounded-xl hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 cursor-pointer"
                                     htmlFor="file-upload"
                                 >
-                                    <Upload className="w-8 h-8 text-surface-400" />
+                                    <Upload className="w-8 h-8 text-slate-400" />
                                     {file ? (
                                         <div className="text-center">
-                                            <p className="text-sm font-medium text-brand-400">
+                                            <p className="text-sm font-medium text-blue-600">
                                                 {file.name}
                                             </p>
-                                            <p className="text-xs text-surface-500 mt-1">
+                                            <p className="text-xs text-slate-500 mt-1">
                                                 {(file.size / 1024).toFixed(1)} KB
                                             </p>
                                         </div>
                                     ) : (
                                         <div className="text-center">
-                                            <p className="text-sm text-surface-300">
+                                            <p className="text-sm text-slate-600">
                                                 Click to select a file
                                             </p>
-                                            <p className="text-xs text-surface-500 mt-1">
+                                            <p className="text-xs text-slate-500 mt-1">
                                                 CSV files only
                                             </p>
                                         </div>

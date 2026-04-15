@@ -26,8 +26,16 @@ import {
 } from "lucide-react";
 
 const CHART_COLORS = [
-    "#6366f1", "#06b6d4", "#10b981", "#f59e0b", "#f43f5e",
-    "#8b5cf6", "#ec4899", "#14b8a6", "#f97316", "#3b82f6",
+    "#2563eb",
+    "#0ea5e9",
+    "#10b981",
+    "#f59e0b",
+    "#ef4444",
+    "#14b8a6",
+    "#22c55e",
+    "#38bdf8",
+    "#fb7185",
+    "#16a34a",
 ];
 
 const chartTypes = [
@@ -41,10 +49,10 @@ const chartTypes = [
 const CustomTooltip = ({ active, payload, label }) => {
     if (!active || !payload?.length) return null;
     return (
-        <div className="bg-surface-800/95 backdrop-blur-sm border border-surface-700/50 rounded-xl px-4 py-3 shadow-glass">
-            <p className="text-xs font-medium text-surface-300 mb-1">{label}</p>
+        <div className="bg-white/95 backdrop-blur-sm border border-slate-200 rounded-xl px-4 py-3 shadow-lg">
+            <p className="text-xs font-medium text-slate-500 mb-1">{label}</p>
             {payload.map((entry, i) => (
-                <p key={i} className="text-sm font-semibold text-surface-200">
+                <p key={i} className="text-sm font-semibold text-slate-900">
                     {entry.name}: {typeof entry.value === "number" ? entry.value.toLocaleString() : entry.value}
                 </p>
             ))}
@@ -154,8 +162,8 @@ export default function VisualizationPanel() {
             return (
                 <div className="flex items-center justify-center h-full">
                     <div className="text-center">
-                        <BarChart3 className="w-12 h-12 text-surface-600 mx-auto mb-3" />
-                        <p className="text-surface-400">
+                        <BarChart3 className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                        <p className="text-slate-500">
                             Select columns and chart type to visualize
                         </p>
                     </div>
@@ -172,17 +180,17 @@ export default function VisualizationPanel() {
                 return (
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={chartData} {...commonProps}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                             <XAxis
                                 dataKey="x"
-                                tick={{ fill: "#94a3b8", fontSize: 11 }}
+                                tick={{ fill: "#64748b", fontSize: 11 }}
                                 angle={-45}
                                 textAnchor="end"
                                 height={60}
                             />
-                            <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                            <YAxis tick={{ fill: "#64748b", fontSize: 11 }} />
                             <Tooltip content={<CustomTooltip />} />
-                            <Bar dataKey="y" name={yColumn} fill="#6366f1" radius={[4, 4, 0, 0]} />
+                            <Bar dataKey="y" name={yColumn} fill="#2563eb" radius={[4, 4, 0, 0]} />
                         </BarChart>
                     </ResponsiveContainer>
                 );
@@ -191,20 +199,20 @@ export default function VisualizationPanel() {
                 return (
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={chartData} {...commonProps}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                             <XAxis
                                 dataKey="range"
-                                tick={{ fill: "#94a3b8", fontSize: 11 }}
+                                tick={{ fill: "#64748b", fontSize: 11 }}
                                 angle={-45}
                                 textAnchor="end"
                                 height={60}
                             />
                             <YAxis
-                                tick={{ fill: "#94a3b8", fontSize: 11 }}
-                                label={{ value: "Count", angle: -90, position: "insideLeft", fill: "#94a3b8" }}
+                                tick={{ fill: "#64748b", fontSize: 11 }}
+                                label={{ value: "Count", angle: -90, position: "insideLeft", fill: "#64748b" }}
                             />
                             <Tooltip content={<CustomTooltip />} />
-                            <Bar dataKey="count" name="Frequency" fill="#06b6d4" radius={[4, 4, 0, 0]} />
+                            <Bar dataKey="count" name="Frequency" fill="#0ea5e9" radius={[4, 4, 0, 0]} />
                         </BarChart>
                     </ResponsiveContainer>
                 );
@@ -213,21 +221,21 @@ export default function VisualizationPanel() {
                 return (
                     <ResponsiveContainer width="100%" height="100%">
                         <ScatterChart {...commonProps}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                             <XAxis
                                 dataKey="x"
                                 type="number"
                                 name={xColumn}
-                                tick={{ fill: "#94a3b8", fontSize: 11 }}
+                                tick={{ fill: "#64748b", fontSize: 11 }}
                             />
                             <YAxis
                                 dataKey="y"
                                 type="number"
                                 name={yColumn}
-                                tick={{ fill: "#94a3b8", fontSize: 11 }}
+                                tick={{ fill: "#64748b", fontSize: 11 }}
                             />
                             <Tooltip content={<CustomTooltip />} />
-                            <Scatter name="Data" data={chartData} fill="#8b5cf6" />
+                            <Scatter name="Data" data={chartData} fill="#2563eb" />
                         </ScatterChart>
                     </ResponsiveContainer>
                 );
@@ -236,15 +244,15 @@ export default function VisualizationPanel() {
                 return (
                     <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={chartData} {...commonProps}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                             <XAxis
                                 dataKey="x"
-                                tick={{ fill: "#94a3b8", fontSize: 11 }}
+                                tick={{ fill: "#64748b", fontSize: 11 }}
                                 angle={-45}
                                 textAnchor="end"
                                 height={60}
                             />
-                            <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                            <YAxis tick={{ fill: "#64748b", fontSize: 11 }} />
                             <Tooltip content={<CustomTooltip />} />
                             <Line
                                 type="monotone"
@@ -294,10 +302,10 @@ export default function VisualizationPanel() {
     return (
         <div className="h-full flex flex-col gap-4">
             {/* Config panel */}
-            <div className="glass-card p-4">
+            <div className="card p-4">
                 <div className="flex items-center justify-between mb-3">
-                    <h2 className="text-sm font-semibold text-white flex items-center gap-2">
-                        <Settings2 className="w-4 h-4 text-surface-400" />
+                    <h2 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
+                        <Settings2 className="w-4 h-4 text-slate-400" />
                         Chart Configuration
                     </h2>
                     <button
@@ -312,7 +320,7 @@ export default function VisualizationPanel() {
                     <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 animate-fade-in">
                         {/* Chart Type */}
                         <div>
-                            <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-500 mb-1.5">
                                 Chart Type
                             </label>
                             <div className="flex flex-wrap gap-1">
@@ -321,8 +329,8 @@ export default function VisualizationPanel() {
                                         key={key}
                                         onClick={() => setChartType(key)}
                                         className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${chartType === key
-                                                ? "bg-brand-500/20 text-brand-400 border border-brand-500/30"
-                                                : "text-surface-400 hover:text-surface-200 hover:bg-surface-800/60 border border-transparent"
+                                                ? "bg-blue-50 text-blue-700 border border-blue-200"
+                                                : "text-slate-500 hover:text-slate-900 hover:bg-slate-100 border border-transparent"
                                             }`}
                                         title={label}
                                     >
@@ -335,7 +343,7 @@ export default function VisualizationPanel() {
 
                         {/* X Column */}
                         <div>
-                            <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                            <label className="block text-xs font-medium text-slate-500 mb-1.5">
                                 {chartType === "histogram" ? "Column" : chartType === "pie" ? "Category" : "X Axis"}
                             </label>
                             <select
@@ -353,7 +361,7 @@ export default function VisualizationPanel() {
                         {/* Y Column (not for histogram/pie) */}
                         {chartType !== "histogram" && chartType !== "pie" && (
                             <div>
-                                <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                                <label className="block text-xs font-medium text-slate-500 mb-1.5">
                                     Y Axis
                                 </label>
                                 <select
@@ -373,7 +381,7 @@ export default function VisualizationPanel() {
             </div>
 
             {/* Chart area */}
-            <div className="flex-1 glass-card p-4 min-h-[300px]">
+            <div className="flex-1 card p-4 min-h-[300px]">
                 {renderChart()}
             </div>
         </div>

@@ -24,7 +24,7 @@ export default function Modal({ isOpen, onClose, title, children }) {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm" />
       <div
         ref={dialogRef}
         role="dialog"
@@ -33,11 +33,11 @@ export default function Modal({ isOpen, onClose, title, children }) {
         className="relative glass-card max-w-lg w-full max-h-[90vh] overflow-y-auto animate-scale-in"
       >
         {title && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-surface-800/60">
-            <h2 className="text-lg font-semibold text-white">{title}</h2>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+            <h2 className="text-lg font-semibold text-slate-900">{title}</h2>
             <button
               onClick={onClose}
-              className="text-surface-400 hover:text-surface-200 text-xl transition-colors duration-150 w-8 h-8 rounded-lg hover:bg-surface-800/60 flex items-center justify-center"
+              className="text-slate-400 hover:text-slate-700 text-xl transition-colors duration-150 w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center"
               aria-label="Close"
             >
               &times;

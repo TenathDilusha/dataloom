@@ -5,27 +5,27 @@ import { CheckCircle2, XCircle, AlertTriangle, Info, X } from "lucide-react";
 const typeConfig = {
   success: {
     icon: CheckCircle2,
-    bg: "bg-emerald-500/10 border-emerald-500/30",
-    iconColor: "text-emerald-400",
-    textColor: "text-emerald-200",
+    bg: "bg-emerald-50 border-emerald-200",
+    iconColor: "text-emerald-600",
+    textColor: "text-emerald-700",
   },
   error: {
     icon: XCircle,
-    bg: "bg-red-500/10 border-red-500/30",
-    iconColor: "text-red-400",
-    textColor: "text-red-200",
+    bg: "bg-red-50 border-red-200",
+    iconColor: "text-red-600",
+    textColor: "text-red-700",
   },
   warning: {
     icon: AlertTriangle,
-    bg: "bg-amber-500/10 border-amber-500/30",
-    iconColor: "text-amber-400",
-    textColor: "text-amber-200",
+    bg: "bg-amber-50 border-amber-200",
+    iconColor: "text-amber-600",
+    textColor: "text-amber-700",
   },
   info: {
     icon: Info,
-    bg: "bg-gray-500/10 border-gray-500/30",
-    iconColor: "text-gray-300",
-    textColor: "text-gray-200",
+    bg: "bg-slate-50 border-slate-200",
+    iconColor: "text-slate-600",
+    textColor: "text-slate-700",
   },
 };
 
@@ -43,7 +43,7 @@ export default function Toast({ message, type = "info", onDismiss, duration = 40
 
   return (
     <div
-      className={`flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-xl shadow-glass animate-slide-in-right ${config.bg}`}
+      className={`flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-xl shadow-md animate-slide-in-right ${config.bg}`}
     >
       <Icon className={`w-5 h-5 flex-shrink-0 ${config.iconColor}`} />
       <p className={`text-sm font-medium flex-1 ${config.textColor}`}>
@@ -51,7 +51,7 @@ export default function Toast({ message, type = "info", onDismiss, duration = 40
       </p>
       <button
         onClick={onDismiss}
-        className="text-surface-400 hover:text-surface-200 transition-colors p-0.5"
+        className="text-slate-400 hover:text-slate-700 transition-colors p-0.5"
         aria-label="Dismiss"
       >
         <X className="w-4 h-4" />

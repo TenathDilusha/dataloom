@@ -28,37 +28,37 @@ export default function ProfilePage() {
     return (
         <div className="max-w-3xl mx-auto space-y-6 animate-fade-in">
             <div>
-                <h1 className="text-2xl font-bold text-white">Profile & Settings</h1>
-                <p className="text-surface-400 text-sm mt-1">
+                <h1 className="text-2xl font-semibold text-slate-900 font-display">Profile and Settings</h1>
+                <p className="text-slate-500 text-sm mt-1">
                     Manage your account and preferences
                 </p>
             </div>
 
             {/* Profile Header */}
-            <div className="glass-card p-6">
+            <div className="card p-6">
                 <div className="flex items-center gap-5">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-500 to-violet-500 flex items-center justify-center shadow-glow">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-sky-400 flex items-center justify-center shadow-sm">
                         <User className="w-10 h-10 text-white" />
                     </div>
                     <div>
-                        <h2 className="text-xl font-semibold text-white">
+                        <h2 className="text-xl font-semibold text-slate-900">
                             {profile.name}
                         </h2>
-                        <p className="text-surface-400 text-sm">{profile.email}</p>
-                        <p className="text-surface-500 text-xs mt-1">{profile.bio}</p>
+                        <p className="text-slate-500 text-sm">{profile.email}</p>
+                        <p className="text-slate-400 text-xs mt-1">{profile.bio}</p>
                     </div>
                 </div>
             </div>
 
             {/* Personal Information */}
-            <div className="glass-card p-6">
-                <h3 className="text-sm font-semibold text-surface-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <div className="card p-6">
+                <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-4 flex items-center gap-2">
                     <User className="w-4 h-4" />
                     Personal Information
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Full Name
                         </label>
                         <input
@@ -70,11 +70,11 @@ export default function ProfilePage() {
                         />
                     </div>
                     <div>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Email
                         </label>
                         <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-500" />
+                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             <input
                                 type="email"
                                 value={profile.email}
@@ -85,7 +85,7 @@ export default function ProfilePage() {
                         </div>
                     </div>
                     <div className="sm:col-span-2">
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Bio
                         </label>
                         <textarea
@@ -97,11 +97,11 @@ export default function ProfilePage() {
                         />
                     </div>
                     <div>
-                        <label className="block text-xs font-medium text-surface-400 mb-1.5">
+                        <label className="block text-xs font-medium text-slate-500 mb-1.5">
                             Timezone
                         </label>
                         <div className="relative">
-                            <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-500" />
+                            <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             <input
                                 type="text"
                                 value={profile.timezone}
@@ -115,27 +115,27 @@ export default function ProfilePage() {
             </div>
 
             {/* Preferences */}
-            <div className="glass-card p-6">
-                <h3 className="text-sm font-semibold text-surface-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <div className="card p-6">
+                <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-4 flex items-center gap-2">
                     <Palette className="w-4 h-4" />
                     Preferences
                 </h3>
                 <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 rounded-xl bg-surface-800/40 border border-surface-700/30">
+                    <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-200">
                         <div className="flex items-center gap-3">
-                            <Bell className="w-5 h-5 text-surface-400" />
+                            <Bell className="w-5 h-5 text-slate-400" />
                             <div>
-                                <p className="text-sm font-medium text-surface-200">
+                                <p className="text-sm font-medium text-slate-900">
                                     Notifications
                                 </p>
-                                <p className="text-xs text-surface-500">
+                                <p className="text-xs text-slate-500">
                                     Receive activity notifications
                                 </p>
                             </div>
                         </div>
                         <button
                             onClick={() => setNotifications(!notifications)}
-                            className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${notifications ? "bg-brand-500" : "bg-surface-600"
+                            className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${notifications ? "bg-blue-500" : "bg-slate-300"
                                 }`}
                             id="profile-notifications-toggle"
                         >
@@ -149,8 +149,8 @@ export default function ProfilePage() {
             </div>
 
             {/* Security */}
-            <div className="glass-card p-6">
-                <h3 className="text-sm font-semibold text-surface-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <div className="card p-6">
+                <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-4 flex items-center gap-2">
                     <Shield className="w-4 h-4" />
                     Security
                 </h3>

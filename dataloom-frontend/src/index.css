@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,357 +7,226 @@
 @layer base {
   :root {
     color-scheme: light;
-
-    /* Neutral palette */
-    --bg: 248 250 252;
-    --card: 255 255 255;
-    --border: 226 232 240;
-
-    /* Text */
-    --text-primary: 15 23 42;
-    --text-secondary: 71 85 105;
-    --text-muted: 148 163 184;
-
-    /* Brand */
-    --brand: 148 163 184;
-    --brand-light: 203 213 225;
-
-    /* Accent */
-    --accent: 226 232 240;
-  }
-
-  body {
-    @apply antialiased font-sans;
-    background: #fff;
-    color: #000;
-  }
-
-  *, *::before, *::after {
-    border-color: #000;
+    --page-bg: #f7f8fb;
+    --panel-bg: #ffffff;
+    --panel-soft: #f1f4f9;
+    --panel-border: #e2e8f0;
+    --ink: #0f172a;
+    --muted: #475569;
+    --muted-2: #94a3b8;
+    --primary: #2563eb;
+    --primary-strong: #1d4ed8;
+    --accent: #0ea5e9;
+    --success: #10b981;
+    --danger: #ef4444;
   }
 
   html {
     @apply scroll-smooth;
   }
 
-  ::selection {
-    background: rgb(var(--brand) / 0.2);
+  body {
+    @apply antialiased font-sans;
+    background: var(--page-bg);
+    color: var(--ink);
   }
 
-  /* Scrollbar */
+  *, *::before, *::after {
+    border-color: var(--panel-border);
+  }
+
+  ::selection {
+    background: rgba(37, 99, 235, 0.12);
+  }
+
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgb(var(--border));
+    background: #cbd5f5;
     border-radius: 999px;
   }
 }
 
 @layer components {
+  .app-shell {
+    background:
+      radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 45%),
+      radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.1), transparent 45%),
+      var(--page-bg);
+  }
 
-  /* Card */
   .card {
-    background: rgb(var(--card));
-    border: 1px solid rgb(var(--border));
-    @apply rounded-xl shadow-sm p-6;
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
   }
 
   .card-hover {
-    @apply card transition hover:shadow-md;
+    @apply card transition duration-200 hover:shadow-md hover:-translate-y-0.5;
   }
 
-    .auth-page {
-      @apply min-h-screen bg-gradient-to-b from-surface-950 via-surface-900 to-surface-950 text-surface-100 flex items-center justify-center px-4 py-10 relative overflow-hidden;
-    }
+  .glass-card {
+    @apply rounded-2xl border border-slate-200/70 bg-white/80 shadow-sm backdrop-blur;
+  }
 
-    .auth-bg-layer {
-      @apply absolute inset-0 pointer-events-none;
-    }
-
-    .auth-bg-glow-left {
-      @apply absolute -left-20 top-10 w-96 h-96 bg-white/15 blur-3xl;
-    }
-
-    .auth-bg-glow-right {
-      @apply absolute right-0 bottom-0 w-[28rem] h-[28rem] bg-white/10 blur-[120px];
-    }
-
-    .auth-bg-icon {
-      @apply absolute left-12 bottom-10 w-10 h-10 text-white/30;
-    }
-
-    .auth-container {
-      @apply relative z-10 w-full max-w-xl;
-    }
-
-    .auth-brand-row {
-      @apply flex items-center gap-3 mb-8 justify-center;
-    }
-
-    .auth-brand-logo-wrap {
-      @apply w-12 h-12 rounded-2xl bg-gradient-to-br from-white to-surface-300 flex items-center justify-center shadow-glow;
-    }
-
-    .auth-brand-logo {
-      @apply w-6 h-6 text-white;
-    }
-
-    .auth-brand-title {
-      @apply text-xl font-semibold text-white;
-    }
-
-    .auth-brand-subtitle {
-      @apply text-sm text-surface-400;
-    }
-
-    .auth-card {
-      background-color: var(--card-overlay);
-      @apply backdrop-blur-xl rounded-2xl border border-surface-800/60 shadow-2xl px-8 py-10 space-y-8;
-    }
-
-    .auth-header {
-      @apply space-y-2 text-center;
-    }
-
-    .auth-kicker {
-      @apply text-sm font-semibold text-brand-200 uppercase tracking-[0.2em];
-    }
-
-    .auth-title {
-      @apply text-3xl font-bold text-white;
-    }
-
-    .auth-subcopy {
-      @apply text-surface-400 max-w-md mx-auto;
-    }
-
-    .auth-form {
-      @apply space-y-4;
-    }
-
-    .auth-label {
-      @apply text-sm text-surface-400 block mb-1;
-    }
-
-    .auth-input-with-icon {
-      @apply relative;
-    }
-
-    .auth-input-icon {
-      @apply w-4 h-4 text-surface-500 absolute left-3 top-1/2 -translate-y-1/2;
-    }
-
-    .auth-input-padded {
-      @apply pl-10;
-    }
-
-    .auth-error {
-      @apply text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2;
-    }
-
-    .auth-submit {
-      @apply w-full flex items-center justify-center gap-2;
-    }
-
-    .auth-arrow {
-      @apply w-4 h-4;
-    }
-
-    .auth-divider-row {
-      @apply flex items-center gap-3;
-    }
-
-    .auth-divider-line {
-      @apply h-px flex-1 bg-surface-800;
-    }
-
-    .auth-divider-text {
-      @apply text-xs uppercase tracking-wide text-surface-500;
-    }
-
-    .auth-provider-list {
-      @apply space-y-3;
-    }
-
-    .auth-provider-btn {
-      @apply relative overflow-hidden w-full rounded-xl border border-surface-700/60 bg-surface-900/70 px-4 py-3 text-left shadow-lg transition-all duration-200 hover:border-brand-500/50 hover:shadow-glow disabled:opacity-70;
-    }
-
-    .auth-provider-overlay {
-      @apply absolute inset-0 opacity-0 transition-opacity duration-200;
-    }
-
-    .auth-provider-overlay-google {
-      @apply bg-gradient-to-r from-orange-500 to-amber-400;
-    }
-
-    .auth-provider-overlay-facebook {
-      @apply bg-gradient-to-r from-slate-200 to-slate-400;
-    }
-
-    .auth-provider-overlay-github {
-      @apply bg-gradient-to-r from-zinc-700 to-slate-600;
-    }
-
-    .auth-provider-content {
-      @apply flex items-center gap-3 relative z-10;
-    }
-
-    .auth-provider-icon-wrap {
-      @apply w-10 h-10 rounded-lg bg-surface-800/80 flex items-center justify-center;
-    }
-
-    .auth-provider-icon {
-      @apply w-5 h-5;
-    }
-
-    .auth-provider-text-wrap {
-      @apply flex-1;
-    }
-
-    .auth-provider-title {
-      @apply font-semibold text-surface-100;
-    }
-
-    .auth-provider-subtitle {
-      @apply text-xs text-surface-500;
-    }
-
-    .auth-provider-arrow {
-      @apply w-4 h-4 text-surface-500 transition-colors;
-    }
-
-    .auth-provider-btn:hover .auth-provider-overlay {
-      opacity: 0.1;
-    }
-
-    .auth-provider-btn:hover .auth-provider-arrow {
-      color: rgb(241 245 249);
-    }
-
-    .auth-mode-switch-row {
-      @apply text-sm text-center text-surface-400;
-    }
-
-    .auth-mode-switch-btn {
-      @apply text-brand-300 font-semibold hover:text-brand-200;
-    }
-
-    .auth-legal {
-      @apply text-xs text-center text-surface-500 leading-relaxed;
-    }
-
-  /* Buttons */
+  .glass-card-hover {
+    @apply glass-card transition duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
 
   .btn-primary {
-    @apply px-4 py-2 rounded-lg font-medium text-surface-900 transition border border-surface-300;
-    background: rgb(var(--brand));
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition;
+    background: linear-gradient(120deg, var(--primary), var(--accent));
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18);
   }
 
   .btn-primary:hover {
-    background: rgb(var(--brand-light));
+    background: linear-gradient(120deg, var(--primary-strong), var(--accent));
   }
 
   .btn-secondary {
-    @apply px-4 py-2 rounded-lg font-medium transition;
-    background: rgb(var(--card));
-    border: 1px solid rgb(var(--border));
-    color: rgb(var(--text-secondary));
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-slate-700 transition;
+    background: white;
+    border: 1px solid #e2e8f0;
   }
 
   .btn-secondary:hover {
-    background: rgb(241 245 249);
+    background: #f8fafc;
   }
 
-  /* Inputs */
-
-  .input {
-    @apply w-full px-4 py-2 rounded-lg outline-none transition;
-    border: 1px solid rgb(var(--border));
-    background: rgb(var(--card));
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition;
   }
 
-  .input:focus {
-    border-color: rgb(var(--brand));
-    box-shadow: 0 0 0 2px rgb(var(--brand) / 0.2);
+  .btn-ghost:hover {
+    background: #f1f5f9;
+    color: #0f172a;
   }
 
-  /* Navbar item */
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition;
+    background: var(--danger);
+  }
+
+  .btn-danger:hover {
+    background: #dc2626;
+  }
+
+  .input,
+  .input-field {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm text-slate-900 transition;
+  }
+
+  .input:focus,
+  .input-field:focus {
+    outline: none;
+    border-color: rgba(37, 99, 235, 0.6);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
 
   .nav-item {
-    @apply flex items-center gap-2 px-3 py-2 rounded-lg transition;
-    color: rgb(var(--text-secondary));
+    @apply flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition;
   }
 
   .nav-item:hover {
-    background: rgb(241 245 249);
+    background: #f1f5f9;
+    color: #0f172a;
   }
 
   .nav-item-active {
-    background: rgb(var(--brand) / 0.08);
-    color: rgb(var(--brand));
+    background: rgba(37, 99, 235, 0.12);
+    color: #1d4ed8;
   }
-
-  /* Badge */
 
   .badge {
-    @apply text-xs px-2 py-1 rounded-md;
-    background: rgb(var(--brand) / 0.1);
-    color: rgb(var(--brand));
+    @apply rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide;
+    background: rgba(37, 99, 235, 0.12);
+    color: #1d4ed8;
   }
-}
-
-@layer utilities {
 
   .text-gradient {
-    background: linear-gradient(90deg, rgb(var(--brand)), rgb(var(--accent)));
+    background: linear-gradient(120deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
     color: transparent;
   }
 
-  [class*="text-"] {
-    color: #000 !important;
-    -webkit-text-fill-color: #000 !important;
+  .auth-page {
+    @apply min-h-screen flex items-center justify-center px-4 py-12;
+    background:
+      radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 48%),
+      radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.14), transparent 50%),
+      #f7f8fb;
   }
 
-  [class*="bg-"] {
-    background-color: #fff !important;
-    background-image: none !important;
+  .auth-shell {
+    @apply w-full max-w-5xl grid gap-8 lg:grid-cols-[1.1fr_1fr] items-center;
   }
 
-  [class*="border"] {
-    border-color: #000 !important;
+  .auth-panel {
+    @apply rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-lg backdrop-blur;
   }
 
-  .btn-primary,
-  .btn-secondary,
-  .btn-ghost,
-  .input,
-  .input-field,
-  .glass-card,
-  .glass-card-hover,
-  .card,
-  .card-hover {
-    background: #fff !important;
-    color: #000 !important;
-    border-color: #000 !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
+  .auth-brand {
+    @apply flex items-center gap-3;
   }
 
-  .text-gradient {
-    background: none !important;
-    color: #000 !important;
-    -webkit-text-fill-color: #000 !important;
+  .auth-brand-logo {
+    @apply w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-sky-400 text-white flex items-center justify-center shadow-sm;
   }
 
-  .auth-page,
-  .auth-page * {
-    color: #000 !important;
-    -webkit-text-fill-color: #000 !important;
+  .auth-kicker {
+    @apply text-xs uppercase tracking-[0.2em] text-slate-500;
   }
 
+  .auth-title {
+    @apply text-3xl font-semibold text-slate-900;
+    font-family: "Space Grotesk", Manrope, sans-serif;
+  }
+
+  .auth-subcopy {
+    @apply text-sm text-slate-600;
+  }
+
+  .auth-provider-btn {
+    @apply w-full flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-left shadow-sm transition;
+  }
+
+  .auth-provider-btn:hover {
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .auth-provider-icon {
+    @apply w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center;
+  }
+
+  .auth-provider-title {
+    @apply text-sm font-semibold text-slate-900;
+  }
+
+  .auth-provider-subtitle {
+    @apply text-xs text-slate-500;
+  }
+
+  .auth-divider {
+    @apply flex items-center gap-3 text-xs uppercase tracking-wide text-slate-400;
+  }
+
+  .auth-divider::before,
+  .auth-divider::after {
+    content: "";
+    @apply h-px flex-1 bg-slate-200;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Space Grotesk", Manrope, sans-serif;
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 45%, #f1f5f9 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
 }
 

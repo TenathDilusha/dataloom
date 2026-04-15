@@ -43,14 +43,14 @@ export default function Workspace() {
                 </div>
             )}
             {/* Panel Tabs */}
-            <div className="flex items-center gap-1 mb-4 bg-surface-900/50 backdrop-blur rounded-xl p-1 border border-surface-800/50 w-fit">
+            <div className="flex items-center gap-1 mb-4 bg-white/80 backdrop-blur rounded-xl p-1 border border-slate-200 w-fit">
                 {panels.map(({ key, label, icon: Icon }) => (
                     <button
                         key={key}
                         onClick={() => setActivePanel(key)}
                         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${activePanel === key
-                            ? "bg-brand-500/20 text-brand-400 shadow-inner"
-                            : "text-surface-400 hover:text-surface-200 hover:bg-surface-800/40"
+                            ? "bg-blue-50 text-blue-700"
+                            : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
                             }`}
                         id={`workspace-tab-${key}`}
                     >
@@ -65,8 +65,8 @@ export default function Workspace() {
                 {loading ? (
                     <div className="h-full flex items-center justify-center">
                         <div className="text-center">
-                            <div className="w-10 h-10 border-2 border-brand-400/30 border-t-brand-400 rounded-full animate-spin mx-auto mb-4" />
-                            <p className="text-surface-400 text-sm">Loading dataset...</p>
+                            <div className="w-10 h-10 border-2 border-blue-200 border-t-blue-500 rounded-full animate-spin mx-auto mb-4" />
+                            <p className="text-slate-500 text-sm">Loading dataset...</p>
                         </div>
                     </div>
                 ) : (
